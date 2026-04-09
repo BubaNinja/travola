@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LA TAVOLA -- Домашняя итальянская кухня | Пицца на дровах в Москве</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%95%3C/text%3E%3C/svg%3E">
+<meta name="description" content="LA TAVOLA -- семейный итальянский ресторан в Москве. Свежая паста, пицца на дровах, вино из семейных виноделен. Забронируйте столик.">
+<meta property="og:title" content="LA TAVOLA -- Домашняя итальянская кухня в Москве">
+<meta property="og:description" content="Свежая паста каждый день. Пицца на дровах. Семейные рецепты из Тосканы.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/hero.jpg">
+<meta property="og:locale" content="ru_RU">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Sacramento&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg:#faf5ef;--bg2:#f3ebe0;--bg3:#ebe0d0;
+    --terra:#c4603a;--terra-light:#d4845e;--terra-dark:#a04a2a;--terra-pale:#f0d8cc;
+    --olive:#6b7c4e;--olive-light:#8a9e6a;--olive-pale:#dce4d0;--olive-dark:#4e5c38;
+    --dark:#2a2420;--dark-50:rgba(42,36,32,0.5);--dark-30:rgba(42,36,32,0.3);--dark-10:rgba(42,36,32,0.08);
+    --white:#fff;--cream:#faf5ef;
+    --serif:'Playfair Display',serif;--script:'Sacramento',cursive;--sans:'Manrope',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--dark);overflow-x:hidden;line-height:1.7;font-size:15px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15}
+::selection{background:var(--terra-pale);color:var(--dark)}
+
+.bg-paper{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.35;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    background-size:256px}
+section,nav,footer{position:relative;z-index:1}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;animation:revFB 0.8s ease 2.5s forwards}
+.reveal.vis{opacity:1;transform:none;animation:none}
+@keyframes revFB{to{opacity:1;transform:none}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 5vw;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s}
+nav.scrolled{background:rgba(250,245,239,0.92);backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--dark-10)}
+.nav-logo{text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.nav-logo .script{font-family:var(--script);font-size:32px;color:var(--terra)}
+.nav-logo .sub{font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--dark-30)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:var(--dark-50);text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:var(--terra)}
+.nav-cta{background:var(--terra)!important;color:var(--white)!important;padding:10px 24px!important;border-radius:100px;font-weight:600!important;transition:all 0.3s!important}
+.nav-cta:hover{background:var(--terra-dark)!important;transform:translateY(-2px)}
+.burger{display:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.burger span{width:22px;height:1.5px;background:var(--dark);transition:all 0.3s;transform-origin:center}
+.burger.active span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.burger.active span:nth-child(2){opacity:0}
+.burger.active span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;overflow:hidden;position:relative}
+.hero-text-side{padding:120px 5vw 80px 5vw;position:relative}
+.hero-watermark{position:absolute;font-family:var(--script);font-size:clamp(6rem,14vw,12rem);color:rgba(196,96,58,0.06);top:50%;left:50%;transform:translate(-50%,-50%) rotate(-12deg);white-space:nowrap;pointer-events:none}
+.hero h1{font-size:clamp(2rem,3.8vw,3rem);color:var(--dark);margin-bottom:1.2rem;position:relative;z-index:1;animation:fadeUp 0.9s ease 0.2s both}
+.hero h1 em{font-family:var(--script);font-weight:400;font-style:normal;font-size:1.2em;color:var(--terra)}
+.hero-sub{font-size:1rem;color:var(--dark-50);max-width:440px;line-height:1.85;margin-bottom:2rem;animation:fadeUp 0.9s ease 0.4s both}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--terra);color:var(--white);text-decoration:none;padding:16px 36px;border-radius:100px;font-size:14px;font-weight:600;transition:all 0.4s;box-shadow:0 6px 24px rgba(196,96,58,0.25);animation:fadeUp 0.9s ease 0.6s both}
+.hero-cta:hover{background:var(--terra-dark);transform:translateY(-3px);box-shadow:0 10px 36px rgba(196,96,58,0.3)}
+.hero-trust{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap;animation:fadeUp 0.9s ease 0.8s both}
+.hero-trust span{font-size:0.88rem;color:var(--dark-30)}
+.hero-trust strong{color:var(--dark-50);font-weight:600}
+.hero-img-side{height:100%;min-height:100vh;position:relative;overflow:hidden;animation:fadeUp 0.9s ease 0.3s both}
+.hero-img-side img{width:100%;height:100%;object-fit:cover;filter:brightness(0.9) saturate(1.05)}
+.hero-img-side::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 8%);z-index:1}
+
+/* ALTERNATING BLOCKS */
+.alt-section{padding:6rem 5vw}
+.alt-block{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1000px;margin:0 auto 5rem;align-items:center}
+.alt-block.reverse{direction:rtl}
+.alt-block.reverse>*{direction:ltr}
+.alt-img{width:100%;border-radius:16px;aspect-ratio:4/3;object-fit:cover;filter:brightness(0.92) saturate(1.02)}
+.alt-text .label{font-family:var(--script);font-size:28px;color:var(--terra);margin-bottom:0.3rem}
+.alt-text h2{font-size:clamp(1.4rem,2.5vw,1.9rem);margin-bottom:1rem}
+.alt-text p{font-size:0.95rem;color:var(--dark-50);line-height:1.9}
+.alt-divider{display:flex;align-items:center;justify-content:center;gap:2rem;max-width:300px;margin:0 auto 5rem;color:var(--dark-10)}
+.alt-divider svg{width:20px;height:20px;color:var(--olive-light);flex-shrink:0}
+.alt-divider-line{flex:1;height:1px;background:var(--dark-10)}
+
+/* MENU */
+.menu-section{padding:6rem 5vw;background:var(--bg2)}
+.sec-head{text-align:center;margin-bottom:2.5rem}
+.sec-tag{font-family:var(--script);font-size:28px;color:var(--terra);display:block;margin-bottom:0.3rem}
+.sec-title{font-size:clamp(1.6rem,3vw,2.4rem)}
+.menu-tabs{display:flex;gap:0;justify-content:center;margin-bottom:2.5rem}
+.menu-tab{padding:10px 24px;font-family:var(--sans);font-size:13px;font-weight:500;background:none;border:none;border-bottom:2px solid transparent;color:var(--dark-30);cursor:pointer;transition:all 0.3s}
+.menu-tab:hover{color:var(--terra)}
+.menu-tab.active{color:var(--terra);border-bottom-color:var(--terra)}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:900px;margin:0 auto}
+.menu-card{background:var(--white);border-radius:12px;overflow:hidden;border:1px solid var(--dark-10);transition:all 0.4s}
+.menu-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(42,36,32,0.08)}
+.mc-img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(0.92)}
+.mc-body{padding:1.2rem 1.4rem}
+.mc-tag{font-family:var(--script);font-size:18px;color:var(--olive)}
+.mc-name{font-family:var(--serif);font-size:1.15rem;margin:0.2rem 0 0.4rem}
+.mc-desc{font-size:0.82rem;color:var(--dark-30);line-height:1.6;margin-bottom:0.8rem}
+.mc-foot{display:flex;align-items:center;justify-content:space-between}
+.mc-price{font-family:var(--serif);font-size:1.2rem;color:var(--terra);font-weight:500}
+.mc-add{background:var(--olive-pale);color:var(--olive-dark);border:none;padding:8px 18px;border-radius:100px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.3s}
+.mc-add:hover{background:var(--olive);color:var(--white)}
+.mc-add.added{background:var(--olive);color:var(--white)}
+
+/* GALLERY */
+.gallery-section{padding:6rem 5vw}
+.gallery-masonry{columns:3;column-gap:12px;max-width:1000px;margin:0 auto}
+.gm-item{break-inside:avoid;margin-bottom:12px;border-radius:10px;overflow:hidden;cursor:pointer;position:relative}
+.gm-item img{width:100%;display:block;filter:brightness(0.85);transition:all 0.5s}
+.gm-item:hover img{filter:brightness(0.95);transform:scale(1.03)}
+
+/* BOOKING */
+.booking-section{padding:6rem 5vw;background:var(--bg2)}
+.booking-trigger{text-align:center;font-family:var(--script);font-size:22px;color:var(--terra);margin-bottom:2.5rem}
+.booking-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1000px;margin:0 auto;align-items:start}
+.booking-form{background:var(--white);border:1px solid var(--dark-10);border-radius:12px;padding:2rem}
+.fg{display:flex;flex-direction:column;gap:0.3rem;margin-bottom:1rem}
+.fg label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--dark-30)}
+.fg input,.fg select,.fg textarea{background:var(--bg);border:1px solid var(--dark-10);border-radius:8px;padding:12px 14px;font-family:var(--sans);font-size:14px;color:var(--dark);outline:none;transition:all 0.3s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--terra);box-shadow:0 0 0 3px rgba(196,96,58,0.08)}
+.fg select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%23c4603a' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.fg select option{background:var(--white)}
+.fg textarea{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--terra);color:var(--white);border:none;padding:15px;border-radius:100px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.3s;box-shadow:0 6px 24px rgba(196,96,58,0.2);margin-top:0.5rem}
+.btn-submit:hover{background:var(--terra-dark);transform:translateY(-2px)}
+.btn-submit .btn-spinner{display:none;width:18px;height:18px;border:2px solid transparent;border-top-color:var(--white);border-radius:50%;animation:spin 0.7s linear infinite}
+.btn-submit.loading .btn-text{display:none}
+.btn-submit.loading .btn-spinner{display:inline-block}
+.btn-submit.sent{opacity:0.7;pointer-events:none}
+
+.booking-info h3{font-size:1.5rem;margin-bottom:1.5rem}
+.bi-item{display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start}
+.bi-item svg{width:18px;height:18px;color:var(--terra);flex-shrink:0;margin-top:3px}
+.bi-item p{font-size:0.9rem;color:var(--dark-50);line-height:1.7}
+.bi-item strong{color:var(--dark);font-weight:500;display:block;margin-bottom:2px}
+.bi-item a{color:var(--terra);text-decoration:none}
+
+/* CART MINI */
+.cart-mini{background:var(--terra-pale);border-radius:10px;padding:1.2rem;margin-bottom:1.5rem;display:none}
+.cart-mini.has-items{display:block}
+.cart-mini h4{font-family:var(--serif);font-size:1rem;margin-bottom:0.6rem;color:var(--terra-dark)}
+.cart-item{display:flex;justify-content:space-between;font-size:0.85rem;padding:4px 0;border-bottom:1px solid rgba(196,96,58,0.15)}
+.cart-item-name{color:var(--dark)}
+.cart-item-price{color:var(--terra);font-weight:500}
+.cart-total{display:flex;justify-content:space-between;font-weight:600;margin-top:0.5rem;font-size:0.9rem;color:var(--terra-dark)}
+
+/* FOOTER */
+footer{padding:4rem 5vw 2rem;background:var(--bg2);border-top:1px solid var(--dark-10)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand .nav-logo{margin-bottom:1rem}
+.footer-brand p{font-size:0.82rem;color:var(--dark-30);max-width:260px;line-height:1.7}
+.footer-col h4{font-family:var(--serif);font-size:1rem;margin-bottom:1rem}
+.footer-col a{display:block;font-size:0.82rem;color:var(--dark-30);text-decoration:none;margin-bottom:0.5rem;transition:color 0.3s}
+.footer-col a:hover{color:var(--terra)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--dark-10);font-size:0.75rem;color:var(--dark-30)}
+.footer-socials{display:flex;gap:1.5rem}
+.footer-socials a{color:var(--dark-30);text-decoration:none;font-size:0.75rem;transition:color 0.3s}
+.footer-socials a:hover{color:var(--terra)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(42,36,32,0.4);backdrop-filter:blur(6px);z-index:10000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all 0.4s}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal-box{background:var(--white);border-radius:16px;padding:2.5rem;text-align:center;max-width:380px;width:92%;transform:scale(0.9) translateY(20px);transition:transform 0.4s cubic-bezier(0.22,1,0.36,1)}
+.modal-overlay.active .modal-box{transform:scale(1) translateY(0)}
+.modal-check{width:52px;height:52px;margin:0 auto 1rem}
+.modal-check circle{fill:none;stroke:var(--terra);stroke-width:2;stroke-dasharray:166;stroke-dashoffset:166;animation:mc 0.6s ease 0.2s forwards}
+.modal-check polyline{fill:none;stroke:var(--terra);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:48;stroke-dashoffset:48;animation:mt 0.4s ease 0.7s forwards}
+@keyframes mc{to{stroke-dashoffset:0}}
+@keyframes mt{to{stroke-dashoffset:0}}
+.modal-title{font-family:var(--serif);font-size:1.3rem;margin-bottom:0.5rem}
+.modal-text{font-size:0.88rem;color:var(--dark-50);margin-bottom:1.5rem;line-height:1.7}
+.modal-close{background:var(--terra);color:var(--white);border:none;padding:12px 28px;border-radius:100px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.3s}
+.modal-close:hover{background:var(--terra-dark)}
+
+/* FLOAT */
+.float-msg{position:fixed;bottom:1.5rem;right:1.5rem;width:48px;height:48px;border-radius:14px;z-index:999;overflow:hidden;box-shadow:0 4px 20px rgba(88,86,214,0.35);animation:msgP 2.5s ease-in-out infinite;transition:transform 0.3s;display:flex;align-items:center;justify-content:center}
+.float-msg:hover{transform:scale(1.1);animation:none}
+@keyframes msgP{0%,100%{box-shadow:0 4px 20px rgba(88,86,214,0.35)}50%{box-shadow:0 4px 30px rgba(88,86,214,0.5)}}
+.scroll-top{position:fixed;bottom:1.5rem;right:5rem;width:40px;height:40px;border-radius:50%;background:var(--white);border:1px solid var(--dark-10);color:var(--terra);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:999;opacity:0;visibility:hidden;transition:all 0.3s;text-decoration:none}
+.scroll-top.visible{opacity:1;visibility:visible}
+.scroll-top:hover{background:var(--terra-pale);transform:translateY(-2px)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    nav{padding:14px 20px}
+    .nav-links{position:fixed;top:0;right:-100%;width:70vw;height:100vh;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;transition:right 0.4s}
+    .nav-links.open{right:0}
+    .burger{display:flex}
+    .hero{grid-template-columns:1fr;min-height:auto}
+    .hero-img-side{min-height:50vh;order:-1}
+    .hero-img-side::before{background:linear-gradient(to top,var(--bg) 0%,transparent 15%)}
+    .hero-text-side{padding:2rem 5vw 4rem}
+    .alt-block,.alt-block.reverse{grid-template-columns:1fr;direction:ltr}
+    .menu-grid{grid-template-columns:1fr}
+    .gallery-masonry{columns:2}
+    .booking-wrap{grid-template-columns:1fr}
+    .form-row{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+    .footer-bottom{flex-direction:column;gap:1rem;text-align:center}
+    .float-msg{width:44px;height:44px;border-radius:12px;bottom:1rem;right:1rem}
+    .scroll-top{bottom:1rem;right:4.5rem}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"LA TAVOLA","image":"images/hero.jpg","servesCuisine":"Italian","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"ул. Тосканская 7","addressLocality":"Москва","addressCountry":"RU"},"telephone":"+7 (495) 333-44-55","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"528"}}
+</script>
+</head>
+<body>
+<div class="bg-paper"></div>
+
+<nav id="navbar">
+    <a href="#" class="nav-logo"><span class="script">La Tavola</span><span class="sub">trattoria</span></a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#story">О нас</a></li>
+        <li><a href="#menu">Меню</a></li>
+        <li><a href="#gallery">Галерея</a></li>
+        <li><a href="#booking" class="nav-cta">Забронировать</a></li>
+    </ul>
+    <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-text-side">
+        <div class="hero-watermark">la dolce vita</div>
+        <h1>Домашняя итальянская кухня <em>из печи</em> -- как у бабушки в Тоскане</h1>
+        <p class="hero-sub">Свежая паста каждый день. Пицца на дровах. Вино из семейных виноделен.</p>
+        <a href="#booking" class="hero-cta">Забронировать столик</a>
+        <div class="hero-trust">
+            <span><strong>12 лет</strong> в Москве</span>
+            <span><strong>Семейные</strong> рецепты</span>
+            <span><strong>4.8</strong> на Яндекс Картах</span>
+        </div>
+    </div>
+    <div class="hero-img-side">
+        <img src="images/hero.jpg" alt="LA TAVOLA">
+    </div>
+</section>
+
+<!-- ALTERNATING -->
+<section class="alt-section" id="story">
+    <div class="alt-block reveal">
+        <img class="alt-img" src="images/pizza.jpg" alt="Пицца на дровах" loading="lazy">
+        <div class="alt-text">
+            <div class="label">Cucina</div>
+            <h2>Пицца из дровяной печи</h2>
+            <p>Тесто на 72-часовой ферментации. Итальянская мука Caputo. Томаты Сан-Марцано. Моцарелла приезжает из Кампании каждую неделю. Печь нагрета до 450 градусов -- пицца готова за 90 секунд.</p>
+        </div>
+    </div>
+    <div class="alt-divider"><div class="alt-divider-line"></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4m-7.07-15.07l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg><div class="alt-divider-line"></div></div>
+    <div class="alt-block reverse reveal">
+        <img class="alt-img" src="images/interior.jpg" alt="Интерьер" loading="lazy">
+        <div class="alt-text">
+            <div class="label">Atmosfera</div>
+            <h2>Тепло семейного ужина</h2>
+            <p>Терракотовые стены, свечи на каждом столе, живая музыка по пятницам. У нас встречаются друзья, отмечают дни рождения и просто проводят вечер так, как это делают в Италии -- не торопясь.</p>
+        </div>
+    </div>
+    <div class="alt-divider"><div class="alt-divider-line"></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c-4.97 0-9 3.58-9 8 0 1.6.47 3.09 1.28 4.36L3 21l5.16-1.32A9.47 9.47 0 0012 20.5c4.97 0 9-3.58 9-8s-4.03-8.5-9-8.5z"/></svg><div class="alt-divider-line"></div></div>
+    <div class="alt-block reveal">
+        <img class="alt-img" src="images/pasta.jpg" alt="Паста" loading="lazy">
+        <div class="alt-text">
+            <div class="label">Tradizione</div>
+            <h2>Рецепты четырёх поколений</h2>
+            <p>Наша паста -- это рецепт прабабушки Розы из Лукки. Тальятелле катаем вручную каждое утро. Ризотто томим ровно 18 минут. Тирамису готовим на маскарпоне из-под Пармы.</p>
+        </div>
+    </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+    <div class="sec-head reveal">
+        <span class="sec-tag">Il Menu</span>
+        <h2 class="sec-title">Наше меню</h2>
+    </div>
+    <div class="menu-tabs reveal">
+        <button class="menu-tab active" onclick="filterMenu('all',this)">Всё</button>
+        <button class="menu-tab" onclick="filterMenu('pizza',this)">Пицца</button>
+        <button class="menu-tab" onclick="filterMenu('pasta',this)">Паста</button>
+        <button class="menu-tab" onclick="filterMenu('meat',this)">Мясо</button>
+        <button class="menu-tab" onclick="filterMenu('wine',this)">Вино</button>
+    </div>
+    <div class="menu-grid reveal" id="menuGrid"></div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+    <div class="sec-head reveal">
+        <span class="sec-tag">Galleria</span>
+        <h2 class="sec-title">Атмосфера LA TAVOLA</h2>
+    </div>
+    <div class="gallery-masonry reveal">
+        <div class="gm-item"><img src="images/interior.jpg" alt="Интерьер" loading="lazy"></div>
+        <div class="gm-item"><img src="images/pizza.jpg" alt="Пицца" loading="lazy"></div>
+        <div class="gm-item"><img src="images/pasta.jpg" alt="Паста" loading="lazy"></div>
+        <div class="gm-item"><img src="images/wine.jpg" alt="Вино" loading="lazy"></div>
+        <div class="gm-item"><img src="images/dessert.jpg" alt="Десерт" loading="lazy"></div>
+    </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+    <div class="sec-head reveal">
+        <span class="sec-tag">Prenotazione</span>
+        <h2 class="sec-title">Забронируйте столик</h2>
+    </div>
+    <p class="booking-trigger reveal">Забронируйте с предзаказом -- блюда будут ждать вас горячими</p>
+    <div class="booking-wrap">
+        <div class="reveal">
+            <div class="cart-mini" id="cartMini">
+                <h4>Ваш предзаказ</h4>
+                <div id="cartItems"></div>
+                <div class="cart-total"><span>Итого:</span><span id="cartTotal">0 р.</span></div>
+            </div>
+            <div class="booking-form">
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="fg"><label>Имя</label><input type="text" name="name" placeholder="Ваше имя" required></div>
+                        <div class="fg"><label>Телефон</label><input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="fg"><label>Дата</label><input type="date" name="date" required></div>
+                        <div class="fg">
+                            <label>Время</label>
+                            <select name="time" required>
+                                <option value="">Выберите</option>
+                                <option>12:00</option><option>13:00</option><option>14:00</option>
+                                <option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="fg">
+                        <label>Гости</label>
+                        <select name="guests" required>
+                            <option value="">Сколько</option>
+                            <option>1</option><option>2</option><option>3-4</option><option>5-6</option><option>7-10</option><option>Больше 10</option>
+                        </select>
+                    </div>
+                    <div class="fg"><label>Комментарий</label><textarea name="comment" placeholder="Повод, пожелания по столику..."></textarea></div>
+                    <input type="hidden" name="preorder" id="preorderHidden">
+                    <button type="submit" class="btn-submit" id="submitBtn"><span class="btn-text">Забронировать</span><span class="btn-spinner"></span></button>
+                </form>
+            </div>
+        </div>
+        <div class="booking-info reveal">
+            <h3>Ждём вас</h3>
+            <div class="bi-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+                <p><strong>Адрес</strong>ул. Тосканская 7, Москва<br>м. Китай-город, 5 мин</p>
+            </div>
+            <div class="bi-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <p><strong>Часы работы</strong>Пн-Чт: 12:00 -- 23:00<br>Пт-Сб: 12:00 -- 00:00<br>Вс: 12:00 -- 22:00</p>
+            </div>
+            <div class="bi-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <p><strong>Бронирование</strong><a href="tel:+74953334455">+7 (495) 333-44-55</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <a href="#" class="nav-logo"><span class="script">La Tavola</span><span class="sub">trattoria</span></a>
+            <p>Семейный итальянский ресторан в центре Москвы. Рецепты четырёх поколений, вино из Тосканы.</p>
+        </div>
+        <div class="footer-col"><h4>Навигация</h4><a href="#story">О нас</a><a href="#menu">Меню</a><a href="#gallery">Галерея</a><a href="#booking">Бронирование</a></div>
+        <div class="footer-col"><h4>Меню</h4><a href="#">Пицца</a><a href="#">Паста</a><a href="#">Мясо и рыба</a><a href="#">Вино</a></div>
+        <div class="footer-col"><h4>Контакты</h4><a href="tel:+74953334455">+7 (495) 333-44-55</a><a href="#">ул. Тосканская 7</a><a href="#">Пн-Вс 12-23</a></div>
+    </div>
+    <div class="footer-bottom">
+        <span>LA TAVOLA 2026</span>
+        <div class="footer-socials"><a href="#">Telegram</a><a href="#">Instagram</a><a href="#">VK</a></div>
+    </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="successModal" onclick="closeModal(event)">
+    <div class="modal-box">
+        <svg class="modal-check" viewBox="0 0 52 52"><circle cx="26" cy="26" r="25"/><polyline points="16 26 23 33 36 20"/></svg>
+        <p class="modal-title">Столик забронирован</p>
+        <p class="modal-text">Мы позвоним вам для подтверждения. Grazie!</p>
+        <button class="modal-close" onclick="document.getElementById('successModal').classList.remove('active')">Perfetto</button>
+    </div>
+</div>
+
+<!-- MAX -->
+<a href="https://max.ru/" target="_blank" class="float-msg" aria-label="Max Messenger">
+    <img id="maxIcon" alt="Max" style="width:100%;height:100%;border-radius:4px">
+</a>
+<a href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="scroll-top" id="scrollTop" aria-label="Наверх">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
+</a>
+
+<script>
+// Max icon
+document.getElementById('maxIcon').src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABAAEADASIAAhEBAxEB/8QAHAABAQADAQADAAAAAAAAAAAABwgEBQkGAAED/8QANBAAAQMCAwQHBwUBAAAAAAAAAQIDBAURAAYhEjFBcQcIEyJRYYEUFTJCkaHBUlNicrGS/8QAGQEAAgMBAAAAAAAAAAAAAAAABQYBBAcD/8QALhEAAQMCBQEGBgMAAAAAAAAAAQIDBAARBQYSIUExE1FhcZGhQoGxwfDxIjLh/9oADAMBAAIRAxEAPwCY8g5LdryFVCZttU9tWyLaKeUN4HgBxPpy96miw4DfZxIjTKR+lOp5necI0LLjVGoEKltIATGYSg6b1Wuo+pJOMCPl+fV6qxTKZEclTJC9hppA1J/AG8k6AY0jCIjMFsEgauT+cUonElS3TY7cCj52OQd2PyaivPq2Y7Lj6hwaQVn7Ysro26vWXKUy1OzahFaqBAUY5JEVo+GzvcPmrTywy02nU+mxxGp0GNDZToG2GktpHokDHOVm9lpWllBX43sPvR+PHWBdW1c0jHkRHLSWHo9/3W1I/wBAxt6eq1sdGZ0KJOjqjzYrEllXxNvNhaTzB0wP9JPQBlitsOzcrtNUGp6qCGwfZXT4KR8nNP0OJiZwYdUEvoKPG9x89gfrRiM8GzvUsyaZTapG7GoQWJKTp30ajkd49MFHSLktWX1CfAK3ac4rZ72qmVHcCeIPA+h822pUmpUGrSKRV4q4s2MrZdaXw8CDuII1BGhGMGuQW6pRZcB0ApfaUjkbaH0Njgpi2FMYgwVADVa4I9t+QaYXIzcpnpvwaYKvBSsEpGFroKybHotF9/SWQahUE3QpQ1bZ+UDw2viPp4YOnWO3dba/cWEfU2/OKNjtIYYbYaGyhtIQkeAAsMK+YJJQylpPxdfIVjWUmu1UpxXw2t5n9V8fdaYZW884htptJUtazZKQBckngMBmdesXTKdMci5boq6qhBt7U892LSvNIAKiPM2xvusvV5EbKkaixllHvF09uQdS0ixKeRUU+gOJfnRLE6YnL+Asymu3kC4PQfemqRN0u9mnjrTxlLrL0qVNbi5noTtKbWbGXHe7dtHmpNgoDzF+WHqFKjTYjMyG+3IjvIDjTragpK0kXBBG8HHPOXGtfTFI9TfMcqRR6tlaU4pbdPUiREub7CHCoKQPIKFwP5HFnMGW2Y8Yyowtp6jrsdri/jV1pWtN69L1lsls1rKisyRGR7ypKNtZSNXY9++k+Oz8Q5K8cTCg6YvSbHalw3oj6Qpp5tTa0nilQsR9DiDXmTGlvRibllxTX/KiPxixlKWp2OthXwEW8jx6j3pkwZ4kFB4pvSoIeadPyOJV9CDiiEkKSFA3B1GJ2UNpJB4jDnk2b7wyvT5RN1FkJX/ZPdP3GA2YmyUIX3XHr+qyHJbwC3WjyAfT90WdZRpZl0Z2x2C08kc7oOAye0k30xWfSRk9vOFOixjK9kdjv7aXdjb7pFlC1xwseYx4zMHQbSpSEGk1eTDWEAKD6A8lZ8d4Iv8ATBLA8ehxYrbLyrEX4PfemGRCfVJU4kbG30qYprI10xQHVFyxIhUyrZnktKbRUCiPFuLbbbZJUseRUbD+pxs8u9AVHjzESK/VXqmhJv7M032LavJRuVEeQIwxxY7EWM3GjMtsstJCG20JCUoSBYAAbhicw5mYkxjFjb6rXPTYb2F9+tFIyFoT/KvqbIaiQ3pT6ghpltTi1HglIuT9BiCXpHtUt6UdO2dW7/0on84prrOZ4ZoeVF5ZhvA1OrI2XAk6tR799R8Nr4RzUeGJdaOLeT4C2oy5Cx/ci3kL7+p9qYsKGklXfTJk6ssZhyrTK3GUFNzIyHDY/Cq1lJ5hQI9MNfRA+F5bfYKgVNSld2+oBAP+3xzy6CulheSXFUesIdkUN9zbujVcVZ3qSOKTxT6jW4NPUTM1Dr8MSqDW4sxChr2D1lDyUnRQ5EYDpcbxWMGtVlbXrHQw9gE8u6NSDex4sfHvFP2Y88ZeoMpmLMmbbq1WWlkbZaH6l23Dy3+WN1TKlT6nHTIp81iU0oXCmnAofbdiYpqN+mNLKCkEqQooPik2P2x3GVWVoAS4Qrvtcen+0ci5jccUSpAt+c1Xc2bDgsl6bLYjNDUrecCEj1JwSdJXTrQqLFdiZY2KxUSCEui/szR8Sr5+SdPMYA6kFOG7ilOH+RJ/3GhnI34KYdk6MhYW+sr8Og+e5P0o4zO7XoLVjVirVGt1eTVatLclzZK9t11Z1J4AcAANABoBjBqs9um0iVPdICWGlK5ngPU2GMWpVGBTQpybLZYSP1K1PIbzgxz5m5VbIhQgtuA2ra72inVcCRwA4DB7HcWjYbHKUkarWSke23AFH2ZIbRfmv//Z";
+
+// Menu data
+const menuData=[
+    {name:'Маргарита',cat:'pizza',tag:'classica',desc:'Томаты Сан-Марцано, моцарелла, базилик',price:680,img:'images/pizza.jpg'},
+    {name:'Дьявола',cat:'pizza',tag:'piccante',desc:'Острая салями, перец чили, моцарелла',price:750,img:'images/pizza.jpg'},
+    {name:'Тальятелле с трюфелем',cat:'pasta',tag:'tartufo',desc:'Домашняя паста, чёрный трюфель, пармезан',price:1200,img:'images/pasta.jpg'},
+    {name:'Карбонара',cat:'pasta',tag:'tradizione',desc:'Гуанчале, пекорино, яичный желток',price:890,img:'images/pasta.jpg'},
+    {name:'Оссобуко',cat:'meat',tag:'Milano',desc:'Телячья голяшка, ризотто алла миланезе',price:1450,img:'images/interior.jpg'},
+    {name:'Тирамису',cat:'meat',tag:'dolce',desc:'Маскарпоне, савоярди, эспрессо',price:520,img:'images/dessert.jpg'},
+    {name:'Кьянти Классико',cat:'wine',tag:'Toscana',desc:'DOCG, 2021. Сангиовезе 100%. Вишня, специи.',price:890,img:'images/wine.jpg'},
+    {name:'Просекко',cat:'wine',tag:'Veneto',desc:'DOC, бокал. Зелёное яблоко, цветы.',price:520,img:'images/wine.jpg'},
+];
+let cart=[];
+
+function renderMenu(cat){
+    const items=cat==='all'?menuData:menuData.filter(i=>i.cat===cat);
+    document.getElementById('menuGrid').innerHTML=items.map((m,i)=>{
+        const inCart=cart.find(c=>c.name===m.name);
+        return `<div class="menu-card">
+            <img class="mc-img" src="${m.img}" alt="${m.name}" loading="lazy">
+            <div class="mc-body">
+                <div class="mc-tag">${m.tag}</div>
+                <div class="mc-name">${m.name}</div>
+                <div class="mc-desc">${m.desc}</div>
+                <div class="mc-foot">
+                    <span class="mc-price">${m.price} р.</span>
+                    <button class="mc-add ${inCart?'added':''}" onclick="addToCart('${m.name}',${m.price},this)">${inCart?'Добавлено':'+ В корзину'}</button>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function filterMenu(cat,btn){
+    document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+    btn.classList.add('active');
+    renderMenu(cat);
+}
+
+function addToCart(name,price,btn){
+    if(cart.find(c=>c.name===name))return;
+    cart.push({name,price});
+    btn.textContent='Добавлено';btn.classList.add('added');
+    updateCart();
+}
+
+function updateCart(){
+    const mini=document.getElementById('cartMini');
+    const items=document.getElementById('cartItems');
+    const total=document.getElementById('cartTotal');
+    const hidden=document.getElementById('preorderHidden');
+    if(!cart.length){mini.classList.remove('has-items');hidden.value='';return;}
+    mini.classList.add('has-items');
+    items.innerHTML=cart.map(c=>`<div class="cart-item"><span class="cart-item-name">${c.name}</span><span class="cart-item-price">${c.price} р.</span></div>`).join('');
+    const sum=cart.reduce((s,c)=>s+c.price,0);
+    total.textContent=sum.toLocaleString('ru-RU')+' р.';
+    hidden.value=cart.map(c=>c.name).join(', ');
+}
+
+// Nav
+window.addEventListener('scroll',()=>{
+    document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
+    document.getElementById('scrollTop').classList.toggle('visible',window.scrollY>500);
+});
+function toggleMenu(){
+    document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('burger').classList.toggle('active');
+}
+document.querySelectorAll('.nav-links a').forEach(link=>{
+    link.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');document.getElementById('burger').classList.remove('active');});
+});
+
+// Reveal
+const obs=new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*80);obs.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Form
+function handleSubmit(e){
+    e.preventDefault();
+    const btn=document.getElementById('submitBtn');
+    const form=e.target;
+    btn.classList.add('loading');
+
+    /* === TELEGRAM BOT API ===
+    const BOT_TOKEN='YOUR_BOT_TOKEN';
+    const CHAT_ID='YOUR_CHAT_ID';
+    const fd=new FormData(form);
+    const text=`Бронь LA TAVOLA:%0A`+
+        `Имя: ${fd.get('name')||'-'}%0A`+
+        `Тел: ${fd.get('phone')||'-'}%0A`+
+        `Дата: ${fd.get('date')||'-'}%0A`+
+        `Время: ${fd.get('time')||'-'}%0A`+
+        `Гости: ${fd.get('guests')||'-'}%0A`+
+        `Предзаказ: ${fd.get('preorder')||'нет'}%0A`+
+        `Комментарий: ${fd.get('comment')||'-'}`;
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`)
+        .then(()=>showOk(btn,form)).catch(()=>showOk(btn,form));
+    return;
+    === END === */
+    setTimeout(()=>showOk(btn,form),1000);
+}
+function showOk(btn,form){
+    btn.classList.remove('loading');btn.classList.add('sent');
+    btn.querySelector('.btn-text').textContent='Забронировано';
+    document.getElementById('successModal').classList.add('active');
+    form.reset();cart=[];updateCart();
+    setTimeout(()=>{btn.classList.remove('sent');btn.querySelector('.btn-text').textContent='Забронировать';},4000);
+}
+function closeModal(e){if(e.target===e.currentTarget)e.currentTarget.classList.remove('active');}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});
+});
+
+// Init
+renderMenu('all');
+</script>
+</body>
+</html>
